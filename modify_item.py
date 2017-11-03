@@ -16,3 +16,6 @@ class TodoItem():
             description = input("Please enter a description of task (max 150 characters)")
             description_length = len(description)
         self.todo_items.append(todo_item.Task(name, description))
+
+    def mark_as_done(self, index):
+        self.todo.items[index].is_done = True
