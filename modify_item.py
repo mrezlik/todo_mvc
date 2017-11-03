@@ -18,4 +18,7 @@ class TodoItem():
         self.todo_items.append(todo_item.Task(name, description))
 
     def mark_as_done(self, index):
-        self.todo.items[index].is_done = True
+        self.todo_items[index].is_done = True
+
+    def delete_task(self, index):
+        del self.todo_items[index]
