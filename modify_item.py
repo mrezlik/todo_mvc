@@ -16,11 +16,8 @@ class TodoItem():
         self.todo_items.pop(index-1)
 
     def display_tasks(self):
-        if len(self.todo_items) == 0:
-            return "You don't add any task!"
-        else:
-            for i in range(len(self.todo_items)):
-                print("TASK {0}\n\tID: {0}\n\tName: {1}".format(i+1, self.todo_items[i].name))
+        for i in range(len(self.todo_items)):
+            print("TASK {0}\n\tID: {0}\n\tName: {1}".format(i+1, self.todo_items[i].name))
 
     def display_information_about_task(self, index):
         return("ID: {0}\n Name: {1}\n Description: {2}\n Is done: {3}".format(index, self.todo_items[index-1].name, self.todo_items[index-1].description, self.todo_items[index-1].is_done))

@@ -87,7 +87,10 @@ def menu():
             td.mark_as_done(choosen_task)
             print("You mark task as done!")
         elif user_input == 5:
-            td.display_tasks()
+            if len(td.todo_items) == 0:
+                print("You don't add any task!")
+            else:
+                td.display_tasks()
             input("Press enter to back!")
         elif user_input == 6:
             choosen_task = choose_task(td)
