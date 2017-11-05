@@ -1,5 +1,19 @@
-import os
 from modify_item import TodoItem
+
+
+def choose_task(td):
+    user_input_is_int = False
+    while not user_input_is_int:
+        try:
+            choosen_task = int(input("Which task do you want to choose?(to back enter 0): "))
+        except ValueError:
+            print("Please enter a number!")
+        else:
+            if choosen_task > len(td.todo_items):
+                print("You can't choose task which doesn't exist!")
+            else:
+                user_input_is_int = True
+    return choosen_task
 
 
 def menu():
@@ -8,7 +22,7 @@ def menu():
     td = TodoItem()
     is_end = False
     print("Hello! This is my ToDo app! What do you want to do?")
-    while is_end == False:
+    while is_end is False:
         print("\t\t1. Add task \n \
                2. Remove task \n \
                3. Modify task \n \
@@ -40,14 +54,7 @@ def menu():
                     print("You task descirption is too long!")
         elif user_input == 2:
             while True:
-                user_input_is_int = False
-                while user_input_is_int == False:
-                    try:
-                        choosen_task= int(input("Which task do you want to remove?(to back enter 0): "))
-                    except ValueError:
-                        print("Please enter a number!")
-                    else:
-                        user_input_is_int = True
+                choosen_task = choose_task(td)
                 if choosen_task == 0:
                     break
                 try:
@@ -58,17 +65,7 @@ def menu():
                     print("You remove task!")
                     break
         elif user_input == 3:
-            user_input_is_int = False
-            while user_input_is_int == False:
-                try:
-                    choosen_task = int(input("Which task do you want to modify?(to back enter 0): "))
-                except ValueError:
-                    print("Please enter a number!")
-                else:
-                    if choosen_task > len(td.todo_items):
-                        print("You can't modify task which doesn't exist!")
-                    else:
-                        user_input_is_int = True
+            choosen_task = choose_task(td)
             if choosen_task == 0:
                 break
             while True:
@@ -84,17 +81,7 @@ def menu():
                 else:
                     print("You task descirption is too long!")
         elif user_input == 4:
-            user_input_is_int = False
-            while user_input_is_int == False:
-                try:
-                    choosen_task = int(input("Which task do you want to mark as done?(to back enter 0): "))
-                except ValueError:
-                    print("Please enter a number!")
-                else:
-                    if choosen_task > len(td.todo_items):
-                        print("You can't mark task which doesn't exist!")
-                    else:
-                        user_input_is_int = True
+            choosen_task = choose_task(td)
             if choosen_task == 0:
                 break
             td.mark_as_done(choosen_task)
@@ -103,17 +90,7 @@ def menu():
             td.display_tasks()
             input("Press enter to back!")
         elif user_input == 6:
-            user_input_is_int = False
-            while user_input_is_int == False:
-                try:
-                    choosen_task = int(input("Which task do you want to show?(to back enter 0): "))
-                except ValueError:
-                    print("Please enter a number!")
-                else:
-                    if choosen_task > len(td.todo_items):
-                        print("You can't show task which doesn't exist!")
-                    else:
-                        user_input_is_int = True
+            choosen_task = choose_task(td)
             if choosen_task == 0:
                 break
             print(td.display_information_about_task(choosen_task))
